@@ -57,8 +57,31 @@ def menu_producto():
         for producto in productos:
             print(producto)
             input('\nPresione una tecla para salir')
-
-
+    elif option == 3 or option == '3':
+        codigo = input("Ingrese el codigo del producto a modificar ")
+        codigo = int(codigo)
+        for producto in productos:
+            if codigo == producto.get_codigo():
+                op = input("Ingrese el dato a modificar. \n1)CODIGO:\n2)NOMBRE:\n 3)DESCRIPCION:\n 4)PRECIO:\nSTOCK:\n")
+                if op.isdigit():
+                    op = int(op)
+                if op == 1:
+                    nuevo_codigo = input('Ingrese el nuevo codigo ')
+                    producto.set_codigo(nuevo_codigo)
+                elif op == 2:
+                    nuevo_nombre = input('Ingrese el nuevo nombre')
+                    producto.set_nombre(nuevo_nombre)
+                elif op == 3:
+                    nueva_desc = input("Ingrese la nueva descripcion ")
+                    producto.set_descripcion(nueva_desc)
+                elif op == 4:
+                    nuevo_precio = input("Ingrese el nuevo precio del producto ")
+                    producto.set_precio = (float(nuevo_precio))
+                elif op == 5:
+                    nuevo_stock = input("Ingrese el nuevo stock del producto ")
+                    producto.set_stock(nuevo_stock)
+            print(f"Producto modificado con exito \n{producto.__str__()}")
+            
 
 
 

@@ -5,7 +5,7 @@ from menu import menu_producto
 def sistem():
     while True:
         print('#### BIENVENIDO ####\n')
-        option = input('1) Gestionar Productos\n2) Gestionar Clientes\n3) Gestionar Pedidos\n4) Historial de operaciones\n5) Salir ')
+        option = input('\n1)Gestionar Productos\n2)Gestionar Clientes\n3)Gestionar Pedidos\n4)Historial de operaciones\n5)Salir ')
         os.system('clear')
         if option == '1' or option == 1:
             menu_producto.menu_producto()
