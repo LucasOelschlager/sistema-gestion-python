@@ -1,9 +1,11 @@
 from clases import Producto
 from validaciones import validacion_input
+import os 
 productos = []
 def menu_producto():
     option = input('1) Crear Producto\n2) Mostrar Productos\n3) Modificar Producto\n4) Eliminar Producto')
     if option == 1 or option == '1':
+        os.system('clear')
         nuevo_producto = Producto.Producto(0, '','', 0, 0)
         print(f"Codigo generado automaticamente, el codigo es: {nuevo_producto.get_codigo()}") 
 
@@ -49,6 +51,7 @@ def menu_producto():
 
     ##MOSTRAR LOS PRODUCTOS
     elif option == 2 or option == '2':
+        os.system('clear')
         for producto in productos:
             print(producto)
             input('\nPresione una tecla para salir')
@@ -56,6 +59,7 @@ def menu_producto():
 
     ##MODIFICAR UN PRODUCTO
     elif option == 3 or option == '3':
+        os.system('clear')
         codigo = input("Ingrese el codigo del producto a modificar ")
         if validacion_input.validar_a_numero(codigo):
             codigo = int(codigo)
@@ -84,6 +88,7 @@ def menu_producto():
         
     ##ELIMINAR UN PRODUCTO
     elif option == 4 or option == '4':
+        os.system('clear')
         codigo = input("Ingrese el codigo del producto a modificar ")
         if validacion_input.validar_a_numero(codigo):
             codigo = int(codigo)

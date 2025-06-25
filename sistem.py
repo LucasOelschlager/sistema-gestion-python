@@ -1,6 +1,6 @@
 import sys
 import os 
-from menu import menu_producto
+from menu import menu_producto, menu_clientes
 
 def sistem():
     while True:
@@ -10,7 +10,7 @@ def sistem():
         if option == '1' or option == 1:
             menu_producto.menu_producto()
         elif option == 2 or option == '2':
-            print('Clientes')
+            menu_clientes.menu_clientes()
         elif option == 3 or option == '3':
             print('pedidos')
         elif option == 4 or option == '4':
