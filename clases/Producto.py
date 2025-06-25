@@ -1,6 +1,8 @@
 class Producto:
+    _id_counter = 1
     def __init__(self, codigo: int, nombre: str, descripcion: str, precio: float, stock: int = 0):
-        self.__codigo = codigo
+        self.__codigo = Producto._id_counter
+        Producto._id_counter += 1
         self.__nombre = nombre
         self.__descripcion = descripcion
         self.__precio = precio

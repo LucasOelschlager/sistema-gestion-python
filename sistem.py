@@ -19,7 +19,4 @@ def sistem():
             exit()
         else:
             print('Opcion incorrecta')
-            
-            
-        
 sistem()
