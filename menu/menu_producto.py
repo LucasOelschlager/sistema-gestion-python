@@ -1,12 +1,39 @@
+import json
 from clases import Producto
 from validaciones import validacion_input
+from lista_productos import productos
 import os 
-productos = []
+
+def guardar_productos_json(productos, filename='productos.json'):
+    data = []
+    for prod in productos:
+        data.append({
+            'codigo': prod.get_codigo(),
+            'nombre': prod.get_nombre(),
+            'descripcion': prod.get_descripcion(),
+            'precio': prod.get_precio(),
+            'stock': prod.get_stock()
+        })
+    with open(filename, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+
+def cargar_productos_json(filename='productos.json'):
+    try:
+        with open(filename, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        productos.clear()
+        for p in data:
+            prod = Producto.Producto(p['codigo'], p['nombre'], p['descripcion'], p['precio'], p['stock'])
+            productos.append(prod)
+    except FileNotFoundError:
+        pass
+
 def menu_producto():
+    cargar_productos_json()  # Cargar productos al iniciar
     option = input('1) Crear Producto\n2) Mostrar Productos\n3) Modificar Producto\n4) Eliminar Producto')
     if option == 1 or option == '1':
         os.system('clear')
-        nuevo_producto = Producto.Producto(0, '','', 0, 0)
+        nuevo_producto = Producto.Producto(0, '', '', 0, 0)
         print(f"Codigo generado automaticamente, el codigo es: {nuevo_producto.get_codigo()}") 
 
         while True:
@@ -41,6 +68,7 @@ def menu_producto():
                 op = input('Confirmar producto? S/N')
                 if op.lower() == 's':
                     productos.append(nuevo_producto)
+                    guardar_productos_json(productos)
                     print("PRODUCTO CREADO CON EXITO")
                     break
                 else:
@@ -80,6 +108,7 @@ def menu_producto():
                         elif op == 4:
                             nuevo_stock = input("Ingrese el nuevo stock del producto ")
                             producto.set_stock(nuevo_stock)
+                        guardar_productos_json(productos)
                     else:
                         print("INGRESE UN NUMERO VALIDO ")
         else:
@@ -98,6 +127,7 @@ def menu_producto():
                     op = input("\nConfirmar? S/N")
                     if op.lower() == 's':
                         productos.remove(producto)
+                        guardar_productos_json(productos)
                         print("Producto eliminado")
         else:
             print("INGRESE UN NUMERO VALIDO")

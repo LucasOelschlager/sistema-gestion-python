@@ -36,7 +36,7 @@ class Cliente:
         self.__nombre = nombre
     @apellido.setter
     def apellido(self, apellido: str) -> None:
-        self.apellido = apellido
+        self.__apellido = apellido
     @email.setter
     def email(self, email: str) -> None:
         self.__email = email

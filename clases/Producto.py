@@ -9,7 +9,7 @@ class Producto:
         self.__stock = stock
 
     def __str__(self):
-        return f'Codigo: {self.__codigo}\nNombre: {self.__nombre}\nDescripcion: {self.__descripcion}\nPrecio: {self.precio}\nStock: {self.stock}'
+        return f'Codigo: {self.__codigo}\nNombre: {self.__nombre}\nDescripcion: {self.__descripcion}\nPrecio: {self.__precio}\nStock: {self.__stock}'
 
     '''GETTERS'''    
     def get_codigo(self) -> int:
@@ -31,9 +31,9 @@ class Producto:
     def set_descripcion(self, descripcion):
         self.__descripcion = descripcion
     def set_precio(self, precio = 0):
-        self.precio = precio
+        self.__precio = precio
     def set_stock(self, stock = 0):
-        self.stock = stock
+        self.__stock = stock
 
 
 
